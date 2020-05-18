@@ -34,6 +34,8 @@ function processFirstItem(stringList, callback) {
  *  counter1 uses a closure because the variable being returned by the nested function is closed with that function's defined parent function
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *  counter1 -- the closure method -- would be preferable when you need to control which functions should have access to modify/redefine certain variables.
+ *  counter2's method would be preferable when you need to allow greater access to modified variables across virtually all functions.
  *
 */
 

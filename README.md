@@ -87,7 +87,8 @@ See if you can complete one or more of the following challenges:
 console.log("a defined? " + (typeof a !== 'undefined'));
 console.log("b defined? " + (typeof b !== 'undefined'));
 ```
-
+From what I've learned, 'a' would be the only one listed as 'var' and 'b' would not be assigned 'var, let, or const' but it would be equal to 3.
+This would make b = 3, but 'a' would still be undefined.
 
 2. Write a function that would allow you to do this using a closure. (This is another interview question we've seen before - when you're ready for answers, view an explanation [here](https://www.coderbyte.com/algorithm/3-common-javascript-closure-questions)).
 
@@ -95,9 +96,19 @@ console.log("b defined? " + (typeof b !== 'undefined'));
 var addSix = createBase(6);
 addSix(10); // returns 16
 addSix(21); // returns 27
+
+function createBase(starterValue) {
+  return function(addedValue) {
+    return addedValue + starterValue;
+  }
+}
 ```
 
+
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
+Okay, after researching both for a while, I can admit that before today, I viewed Functional Programming as Object-Oriented Programming since both do look similar in how
+functions/methods handle operations on variables and returns values, as well as how variables behave. Now, I see many different takes on the definitions of Functional Programming
+and Object-Oriented Programming, but I haven't been able to make sense of the purported differences, yet.
 
 ## Resources
 
