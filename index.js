@@ -59,11 +59,13 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
+  let points = Math.floor(Math.random() * 3);
 
-    /*Code Here*/
-
+  return points;
 }
+console.log("Task 2: inning() function test below");
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -79,11 +81,18 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, total) {
+  let awayScore = 0;
+  let homeScore = 0;
+  for(let i = 0; i < total; i++) {
+    awayScore += inning();
+    homeScore += inning();
+  }
 
-  /*Code Here*/
-
+  return "Home: " + homeScore + "\nAway: " + awayScore;
 }
+console.log("Task 3: finalScore() function test below");
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -106,8 +115,29 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function scoreboard(inning, total) {
+  let awayScore = 0;
+  let homeScore = 0;
+  for(let i = 0; i < total; i++) {
+    let inningName;
+    if(i === 0) {
+      inningName = "1st";
+    } else if(i === 1) {
+      inningName = "2nd";
+    } else if(i === 2) {
+      inningName = "3rd";
+    } else {
+      inningName = "" + (i + 1) + "th";
+    }
 
+    awayScore += inning();
+    homeScore += inning();
+
+    console.log(inningName + " inning: " + awayScore + " - " + homeScore + "\n");
+  }
+  return "\nFinal Score: " + awayScore + " - " + homeScore;
+}
+console.log("Task 4: scoreboard() function below");
+console.log("Note, the instructions above doesn't look like how a baseball scoreboard appears, but created function based on instructions, regardless.");
+console.log(scoreboard(inning, 9));
 
