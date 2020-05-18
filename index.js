@@ -15,7 +15,7 @@
  * should return 'foofoo'.
 */
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+  return callback(stringList[0]);
 }
 
 // ⭐️ Example Challenge END ⭐️
@@ -27,8 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *  counter1 calls the function 'counterMaker()' which has it's own locally-declared 'count' variable that it iterates
+ *  counter2 simply iterates the global 'count' variable, but doesn't have access to the 'count' variable contained within counterMaker()
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ *  counter1 uses a closure because the variable being returned by the nested function is closed with that function's defined parent function
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
