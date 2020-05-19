@@ -143,3 +143,51 @@ console.log("Task 4: scoreboard() function below");
 console.log("Note, the instructions above doesn't look like how a baseball scoreboard appears, but created function based on instructions, regardless.");
 console.log(scoreboard(inning, 9));
 
+//Creating a new function to be similar to scoreboard() above, but also to address ties after 9 innings at Brit's suggestion
+function scoreboard2(inning, total) {
+  let awayScore = 0;
+  let homeScore = 0;
+
+  //I could not think of a way to do this using a for-loop, since this can potentially go to inning # 356 or further
+  //So I'm using a while loop instead
+  i = 0;
+
+  while((i < total) || (awayScore == homeScore)) {
+    let inningName = "";
+    if(i / 10 >= 1) {
+      inningName = "" + Math.floor(i / 10);
+    }
+
+    if(i % 10 === 0) {
+      if((Math.floor(i / 10) !== 1) && (Math.floor(i / 10) !== 11)) {
+        inningName += "1st";
+      } else {
+        inningName += "1th";
+      }
+    } else if(i % 10 === 1) {
+      if((Math.floor(i / 10) !== 1) && (Math.floor(i / 10) !== 11)) {
+        inningName += "2nd";
+      } else {
+        inningName += "2th";
+      }
+    } else if(i % 10 === 2) {
+      if((Math.floor(i / 10) !== 1) && (Math.floor(i / 10) !== 11)) {
+        inningName += "3rd";
+      } else {
+        inningName += "3th";
+      }
+    } else {
+      inningName += "" + (i + 1) + "th";
+    }
+
+    awayScore += inning();
+    homeScore += inning();
+
+    console.log(inningName + " inning: " + awayScore + " - " + homeScore + "\n");
+
+    i++;
+  }
+  return "\nFinal Score: " + awayScore + " - " + homeScore;
+}
+console.log("Task 4A: scoreboard2() function below");
+console.log(scoreboard2(inning, 9));
