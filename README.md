@@ -47,9 +47,10 @@ Edit the `ReadMe` file with your answers.
 ```js
 function personalDice(name){
   return function(){
-      // generate random number between 1 and 6
+    // generate random number between 1 and 6
     const newRoll = Math.floor(Math.random() * 6);
-    console.log(`${name} rolled a ${newRoll}`)
+    // FYI: The above line of code doesn't generate 1 - 6, but rather 0 - 5. Math.ceil() could still return 0 - 6, so best option is Math.floor(Math.random() * 6 + 1) to get 1-6
+    console.log(`${name} rolled a ${newRoll}`); // <-- There was a missing ';'
   }
 }
 
@@ -63,8 +64,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+  In this case, 'personalDice()' effectively creates a local variable called 'name' and assigns it a value -- the passed argument, but it doesn't get used until the console.log
+  contained within the nested child function created within 'personalDice()'
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+  The thing that's the same is the function called 'personalDice("Dan")'. The thing that could change is the actual returned result from that function, since it uses a randomizer.
 c. What is the lexical scope of `newRoll`? 
+  Since 'newRoll' is declared inside the innermost nested function, if needed it can access variables in it's parent, grandparent, etc. This includes the Math objects it uses,
+  and 'name' that is effectively declared within its parent 'personalDice()'.
 
 ### Task 3 - Stretch Goals
 
@@ -81,6 +87,8 @@ See if you can complete one or more of the following challenges:
 console.log("a defined? " + (typeof a !== 'undefined'));
 console.log("b defined? " + (typeof b !== 'undefined'));
 ```
+From what I've learned, 'a' would be the only one listed as 'var' and 'b' would not be assigned 'var, let, or const' but it would be equal to 3.
+This would make b = 3, but 'a' would still be undefined.
 
 2. Write a function that would allow you to do this using a closure. (This is another interview question we've seen before - when you're ready for answers, view an explanation [here](https://www.coderbyte.com/algorithm/3-common-javascript-closure-questions)).
 
@@ -88,9 +96,19 @@ console.log("b defined? " + (typeof b !== 'undefined'));
 var addSix = createBase(6);
 addSix(10); // returns 16
 addSix(21); // returns 27
+
+function createBase(starterValue) {
+  return function(addedValue) {
+    return addedValue + starterValue;
+  }
+}
 ```
 
+
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
+Okay, after researching both for a while, I can admit that before today, I viewed Functional Programming as Object-Oriented Programming since both do look similar in how
+functions/methods handle operations on variables and returns values, as well as how variables behave. Now, I see many different takes on the definitions of Functional Programming
+and Object-Oriented Programming, but I haven't been able to make sense of the purported differences, yet.
 
 ## Resources
 
